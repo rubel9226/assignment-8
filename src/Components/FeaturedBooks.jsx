@@ -6,7 +6,6 @@ const FeaturedBooks =async () => {
     const books = await res.json();
     
     const topBooks = books.slice(0,4)
-    console.log(topBooks);
 
     return (
         <div>

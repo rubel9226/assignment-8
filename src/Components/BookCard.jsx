@@ -1,11 +1,9 @@
 import { Button, Card, Chip, Separator } from '@heroui/react';
 import Image from 'next/image';
 import React from 'react';
-import { BiCheck } from 'react-icons/bi';
 import { FaLayerGroup } from 'react-icons/fa';
 
 const BookCard = ({book}) => {
-    console.log(book);
     return (
         <Card className='border rounded-xl'>
             <div className='relative w-full aspect-square'>
