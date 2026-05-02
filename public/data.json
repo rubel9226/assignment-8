@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "title": "The Silent Forest",
+    "author": "Ayesha Rahman",
+    "description": "A mysterious tale of a forest where secrets whisper through the trees.",
+    "category": "Story",
+    "available_quantity": 12,
+    "image_url": "https://picsum.photos/seed/book1/400/600"
+  },
+  {
+    "id": 2,
+    "title": "Mastering JavaScript",
+    "author": "Tanvir Ahmed",
+    "description": "A comprehensive guide to modern JavaScript, from basics to advanced concepts.",
+    "category": "Tech",
+    "available_quantity": 8,
+    "image_url": "https://picsum.photos/seed/book2/400/600"
+  },
+  {
+    "id": 3,
+    "title": "The Cosmos Within",
+    "author": "Dr. Farhana Sultana",
+    "description": "An exploration of the universe and humanity’s place within it.",
+    "category": "Science",
+    "available_quantity": 5,
+    "image_url": "https://picsum.photos/seed/book3/400/600"
+  },
+  {
+    "id": 4,
+    "title": "Echoes of the Past",
+    "author": "Imran Hossain",
+    "description": "A historical fiction uncovering hidden stories from ancient times.",
+    "category": "Story",
+    "available_quantity": 10,
+    "image_url": "https://picsum.photos/seed/book4/400/600"
+  },
+  {
+    "id": 5,
+    "title": "React in Action",
+    "author": "Nusrat Jahan",
+    "description": "Learn how to build powerful web applications using React.js.",
+    "category": "Tech",
+    "available_quantity": 15,
+    "image_url": "https://picsum.photos/seed/book5/400/600"
+  },
+  {
+    "id": 6,
+    "title": "Quantum Realities",
+    "author": "Dr. Reza Karim",
+    "description": "A deep dive into quantum physics and its strange phenomena.",
+    "category": "Science",
+    "available_quantity": 6,
+    "image_url": "https://picsum.photos/seed/book6/400/600"
+  },
+  {
+    "id": 7,
+    "title": "The Lost Kingdom",
+    "author": "Sadia Islam",
+    "description": "An epic adventure of a forgotten kingdom and its hidden treasures.",
+    "category": "Story",
+    "available_quantity": 9,
+    "image_url": "https://picsum.photos/seed/book7/400/600"
+  },
+  {
+    "id": 8,
+    "title": "Node.js Essentials",
+    "author": "Rakib Hasan",
+    "description": "A practical guide to building backend applications with Node.js.",
+    "category": "Tech",
+    "available_quantity": 11,
+    "image_url": "https://picsum.photos/seed/book8/400/600"
+  },
+  {
+    "id": 9,
+    "title": "The Human Brain",
+    "author": "Dr. Mahmudul Haque",
+    "description": "Understanding the structure and function of the human brain.",
+    "category": "Science",
+    "available_quantity": 7,
+    "image_url": "https://picsum.photos/seed/book9/400/600"
+  },
+  {
+    "id": 10,
+    "title": "Whispers in the Dark",
+    "author": "Jannat Chowdhury",
+    "description": "A suspenseful thriller where every shadow hides a secret.",
+    "category": "Story",
+    "available_quantity": 13,
+    "image_url": "https://picsum.photos/seed/book10/400/600"
+  },
+  {
+    "id": 11,
+    "title": "AI Revolution",
+    "author": "Shakib Mahmud",
+    "description": "An introduction to artificial intelligence and its impact on the world.",
+    "category": "Tech",
+    "available_quantity": 14,
+    "image_url": "https://picsum.photos/seed/book11/400/600"
+  },
+  {
+    "id": 12,
+    "title": "Space Exploration",
+    "author": "Dr. Laila Anwar",
+    "description": "The journey of humanity into space and future possibilities.",
+    "category": "Science",
+    "available_quantity": 4,
+    "image_url": "https://picsum.photos/seed/book12/400/600"
+  }
+]
