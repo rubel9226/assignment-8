@@ -1,5 +1,6 @@
 import { Button, Card, Chip, Separator } from '@heroui/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import { FaLayerGroup } from 'react-icons/fa';
 
@@ -30,8 +31,12 @@ const BookCard = ({book}) => {
                 {/* <Chip className=''>Quantity: {book.available_quantity}</Chip> */}
 
             </div>
-            <Button variant='outline' className={'w-full'}>View Details</Button>
+
+            <Link href={`/all-books/${book.id}`} >
+                <Button variant='outline' className={'w-full'}>View Details</Button>
+            </Link>
         </Card>
+            
     );
 };
 
