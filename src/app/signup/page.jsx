@@ -97,7 +97,10 @@ export default function SignUpPage() {
           <Label>Password</Label>
           <Input placeholder="Enter your password" />
           <Description>
-            Must be at least 8 characters with 1 uppercase and 1 number
+            {errMsg ?<Chip color="danger" className="bg-transparent">
+          <Chip.Label>{errMsg}</Chip.Label>
+        </Chip> : "Must be at least 8 characters with 1 uppercase and 1 number" }
+            
           </Description>
           <FieldError />
         </TextField>
@@ -111,9 +114,7 @@ export default function SignUpPage() {
             Reset
           </Button>
         </div>
-        <Chip color="danger" className="bg-transparent">
-          <Chip.Label>{errMsg}</Chip.Label>
-        </Chip>
+        
       </Form>
     </Card>
   );

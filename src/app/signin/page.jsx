@@ -4,6 +4,7 @@ import { Check } from "@gravity-ui/icons";
 import {
   Button,
   Card,
+  Chip,
   Description,
   FieldError,
   Form,
@@ -11,9 +12,12 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
+import { useState } from "react";
+import { GrGoogle } from "react-icons/gr";
 
 export default function SignInPage() {
-    console.log('db url', process.env.MONGODB_URL)
+  const [errMsg, setErrMsg] = useState();    
+
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -25,8 +29,15 @@ export default function SignInPage() {
         password,
         callbackURL: '/'
     });
-    console.log(data, error)
+    console.log(data, error);
+    setErrMsg(error?.message);
   };
+
+  const handleGoogleSignIn = async () => {
+    const data = await authClient.signIn.social({
+        provider: "google",
+    });
+  }
 
   return (
     <Card className="border mx-auto w-125 py-10 mt-5">
@@ -72,8 +83,12 @@ export default function SignInPage() {
           <Label>Password</Label>
           <Input placeholder="Enter your password" />
           <Description>
-            Must be at least 8 characters with 1 uppercase and 1 number
-          </Description>
+            {errMsg 
+            ?<Chip color="danger" className="bg-transparent">
+                <Chip.Label>{errMsg}</Chip.Label>
+              </Chip> : "Must be at least 8 characters with 1 uppercase and 1 number" 
+            }      
+           </Description>
           <FieldError />
         </TextField>
 
@@ -86,6 +101,10 @@ export default function SignInPage() {
             Reset
           </Button>
         </div>
+              <p className="text-center">Or</p>
+          <div>
+              <Button onClick={handleGoogleSignIn} variant="outline" className={'w-full'}><GrGoogle /> Sign in With Google</Button>
+          </div>
       </Form>
     </Card>
   );
