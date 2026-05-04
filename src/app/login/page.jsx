@@ -42,16 +42,6 @@ export default function SignInPage() {
     });
   }
 
-  const {data, isPending} = authClient.useSession()
-    const user = data?.user;
-    useEffect(() => {
-          if (isPending) return;
-          
-          if(user){
-              router.push('/');
-          }
-      }, [user, isPending, router]);
-  
 
   return (
     <Card className="border mx-auto w-125 py-10 mt-5">
