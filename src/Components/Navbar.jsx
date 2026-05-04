@@ -38,16 +38,13 @@ const Navbar = () => {
             <Link href={"/all-books"}>All Photos</Link>
           </li>
           <li>
-            <Link href={"/pricing"}>Pricing</Link>
-          </li>
-          <li>
             <Link href={"/profile"}>Profile</Link>
           </li>
         </ul>
 
         <div className="flex gap-4">
 
-{!user &&          <ul className="flex items-center gap-5 text-sm">
+{!user && <ul className="flex items-center gap-5 text-sm">
             <li>
               <Link href={"/signup"}>SignUp</Link>
             </li>
@@ -60,7 +57,7 @@ const Navbar = () => {
             <Avatar className="cursor-pointer select-none">
                 <Avatar.Image
                   size='sm' 
-                  alt={user.name} 
+                  alt={user?.name} 
                   src={user?.image}
                   referrerPolicy="no-referrer"  
                 />
