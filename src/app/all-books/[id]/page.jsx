@@ -10,9 +10,9 @@ const BookDetailsPage = ({params}) => {
     const [book, setBook] = useState();
     const router = useRouter();
 
-    // const userData = authClient.useSession()
-    // const user = userData?.data?.user;
-    // const isLoading = userData?.isPending;
+    const userData = authClient.useSession()
+    const user = userData?.data?.user;
+    const isLoading = userData?.isPending;
 
     // useEffect(() => {
     //     if (isLoading) return;
@@ -57,13 +57,13 @@ const BookDetailsPage = ({params}) => {
     
     console.log(book)
     
-    // if(isLoading){
-    //     return (
-    //         <div>
-    //             Loading ....
-    //         </div>
-    //     )
-    // }
+    if(isLoading){
+        return (
+            <div>
+                Loading ....
+            </div>
+        )
+    }
     return (
         <div className="flex flex-col md:flex-row gap-6 p-6 border rounded-xl shadow-md bg-white">
 
@@ -75,6 +75,7 @@ const BookDetailsPage = ({params}) => {
                     className="w-48 h-64 object-cover rounded-lg shadow"
                     width={192}
                     height={256}
+                    loading="eager"
                 />
             </div>
 
@@ -90,7 +91,11 @@ const BookDetailsPage = ({params}) => {
                     </p>
 
                     <p className="mt-2 font-semibold text-green-600">
-                        {book?.quantity} copies left
+                        {book?.available_quantity} copies left
+                    </p>
+
+                    <p className="mt-2 font-semibold text-green-600">
+                        {book?.category} category
                     </p>
                 </div>
 

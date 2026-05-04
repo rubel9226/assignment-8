@@ -48,10 +48,10 @@ const AllBooksPage = () => {
 
     return (
         <div>
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col justify-between items-center md:flex-row">
                 <h1 className="text-2xl font-bold m-4">All Books</h1>
 
-                <form onSubmit={handleSearch} className="flex gap-2">
+                <form onSubmit={handleSearch} className="flex gap-2 mb-4 md:mb-0">
                     <SearchField aria-label="Search books">
                         <SearchField.Group className="bg-blue-400/20">
                             <SearchField.SearchIcon />
@@ -59,7 +59,7 @@ const AllBooksPage = () => {
                             <SearchField.Input
                                 value={search}
                                 onChange={(e) => setSearch(e.target.value)}
-                                className="w-70"
+                                className="md:w-70"
                                 placeholder="Search..."
                             />
                 
