@@ -11,7 +11,7 @@ const Banner = () => {
             Find Your Next Read
           </h1>
           <p className="text-lg md:text-xl mb-6 max-w-xl text-gray-200">
-            Generate high-quality images from simple text prompts.
+            Read all books here and earn gan.
           </p>
 
           <div className="flex gap-4">

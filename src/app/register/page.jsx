@@ -37,7 +37,8 @@ export default function SignUpPage() {
     if(error){
         setErrMsg(error.message)
     }else{
-        router.push('/login');
+      await authClient.signOut();
+      router.push('/login');
     }
   };
   const {data, isPending} = authClient.useSession()
@@ -46,7 +47,7 @@ export default function SignUpPage() {
         if (isPending) return;
         
         if(user){
-            router.push('/login');
+            router.push('/');
         }
     }, [user, isPending, router]);
 
