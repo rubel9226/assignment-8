@@ -6,6 +6,9 @@ const nextConfig = {
     remotePatterns: [
       {
         hostname: 'picsum.photos'
+      },
+      {
+        hostname: 'i.ibb.co'
       }
     ]
   }

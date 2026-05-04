@@ -9,17 +9,17 @@ const BookDetailsPage = ({params}) => {
     const [book, setBook] = useState();
     const router = useRouter();
 
-    const userData = authClient.useSession()
-    const user = userData?.data?.user;
-    const isLoading = userData?.isPending;
+    // const userData = authClient.useSession()
+    // const user = userData?.data?.user;
+    // const isLoading = userData?.isPending;
 
-    useEffect(() => {
-        if (isLoading) return;
+    // useEffect(() => {
+    //     if (isLoading) return;
         
-        if(!user){
-            router.push('/');
-        }
-    }, [user, isLoading, router]);
+    //     if(!user){
+    //         router.push('/');
+    //     }
+    // }, [user, isLoading, router]);
     
 
 
@@ -56,13 +56,13 @@ const BookDetailsPage = ({params}) => {
     
     console.log(book)
     
-    if(isLoading){
-        return (
-            <div>
-                Loading ....
-            </div>
-        )
-    }
+    // if(isLoading){
+    //     return (
+    //         <div>
+    //             Loading ....
+    //         </div>
+    //     )
+    // }
     return (
         <div className="flex flex-col md:flex-row gap-6 p-6 border rounded-xl shadow-md bg-white">
 
