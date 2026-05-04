@@ -4,6 +4,7 @@ import { authClient } from '@/lib/auth.client';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 const BookDetailsPage = ({params}) => {
     const [book, setBook] = useState();
