@@ -13,51 +13,51 @@ import {
   TextField,
 } from "@heroui/react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { GrGoogle } from "react-icons/gr";
+import { IoCaretDownCircleSharp } from "react-icons/io5";
 
-export default function SignUpPage() {
-    const [errMsg, setErrMsg] = useState();
-    const router = useRouter();
+export default function SignInPage() {
+  const router = useRouter();
+  const [errMsg, setErrMsg] = useState();    
 
-    const onSubmit = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
-    const name = e.target.name.value;
-    const image = e.target.image.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    const {data, error} = await authClient.signUp.email({
-        name, 
+    const {data, error} = await authClient.signIn.email({
         email, 
         password,
-        image,
+        callbackURL: '/'
     });
-    console.log(error)
-    if(error){
-        setErrMsg(error.message)
-    }else{
-        router.push('/');
-    }
+    console.log(data, error);
+    setErrMsg(error?.message);
   };
+
+  const handleGoogleSignIn = async () => {
+    const data = await authClient.signIn.social({
+        provider: "google",
+    });
+  }
+
+  const {data, isPending} = authClient.useSession()
+    const user = data?.user;
+    useEffect(() => {
+          if (isPending) return;
+          
+          if(user){
+              router.push('/');
+          }
+      }, [user, isPending, router]);
+  
 
   return (
     <Card className="border mx-auto w-125 py-10 mt-5">
       <h1 className="text-center text-2xl font-bold">Sign Up</h1>
 
       <Form className="flex w-96 mx-auto flex-col gap-4" onSubmit={onSubmit}>
-        <TextField isRequired name="name" type="text">
-          <Label>Name</Label>
-          <Input placeholder="Enter your name" />
-          <FieldError />
-        </TextField>
-
-        <TextField isRequired name="image" type="text">
-          <Label>Image URL</Label>
-          <Input placeholder="Image URL" />
-          <FieldError />
-        </TextField>
-
         <TextField
           isRequired
           name="email"
@@ -97,11 +97,12 @@ export default function SignUpPage() {
           <Label>Password</Label>
           <Input placeholder="Enter your password" />
           <Description>
-            {errMsg ?<Chip color="danger" className="bg-transparent">
-          <Chip.Label>{errMsg}</Chip.Label>
-        </Chip> : "Must be at least 8 characters with 1 uppercase and 1 number" }
-            
-          </Description>
+            {errMsg 
+            ?<Chip color="danger" className="bg-transparent">
+                <Chip.Label>{errMsg}</Chip.Label>
+              </Chip> : "Must be at least 8 characters with 1 uppercase and 1 number" 
+            }      
+           </Description>
           <FieldError />
         </TextField>
 
@@ -114,7 +115,13 @@ export default function SignUpPage() {
             Reset
           </Button>
         </div>
-        
+          <p className="text-center">Or</p>
+          <div className="flex w-full flex-col gap-3">
+            <Button onClick={handleGoogleSignIn} className="w-full" variant="tertiary">
+              <GrGoogle />
+              Sign in with Google
+            </Button>
+          </div>
       </Form>
     </Card>
   );

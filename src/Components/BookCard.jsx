@@ -1,3 +1,7 @@
+'use client';
+
+
+import { authClient } from '@/lib/auth.client';
 import { Button, Card, Chip, Separator } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -5,6 +9,9 @@ import React from 'react';
 import { FaLayerGroup } from 'react-icons/fa';
 
 const BookCard = ({book}) => {
+    const userData = authClient.useSession()
+    const user = userData?.data?.user;
+    
     return (
         <Card className='border rounded-xl'>
             <div className='relative w-full aspect-square'>
@@ -32,7 +39,8 @@ const BookCard = ({book}) => {
 
             </div>
 
-            <Link href={`/all-books/${book.id}`} >
+            {/* <Link href={`/all-books/${book.id}`} > */}
+            <Link href={user ? `/all-books/${book.id}` : '/login'} >
                 <Button variant='outline' className={'w-full'}>View Details</Button>
             </Link>
         </Card>

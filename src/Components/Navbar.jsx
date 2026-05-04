@@ -3,17 +3,20 @@ import { authClient } from "@/lib/auth.client";
 import { Avatar, Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 const Navbar = () => {
-  const userData = authClient.useSession()
-  const user = userData?.data?.user;
+  const pathname = usePathname();
+  const {data, isPending} = authClient.useSession()
+  const user = data?.user;
+
   
   const handleSignOut =async () => {
     if(confirm('Are You sure to Sign-Out.')){
       await authClient.signOut();
     }
   }
-
 
   return (
     <div className="border-b px-2">
@@ -35,26 +38,28 @@ const Navbar = () => {
             <Link href={"/"}>Home</Link>
           </li>
           <li>
-            <Link href={"/all-books"}>All Photos</Link>
+            <Link href={"/all-books"}>All Books</Link>
           </li>
           <li>
-            <Link href={"/profile"}>Profile</Link>
+            <Link href={user ? `/profile` : '/login'}>Profile</Link>
           </li>
         </ul>
 
         <div className="flex gap-4">
-
-{!user && <ul className="flex items-center gap-5 text-sm">
+        {!isPending && !user && (
+          <ul className="flex items-center gap-5 text-sm">
             <li>
-              <Link href={"/signup"}>SignUp</Link>
+              <Link href={"/register"}>Register</Link>
             </li>
             <li>
-              <Link href={"/signin"}>SignIn</Link>
+              <Link href={"/login"}>Login</Link>
             </li>
-          </ul>}
+          </ul>)
+        }
 
           {user && <div className="flex gap-3 items-center">
-            <Avatar className="cursor-pointer select-none">
+            <div className="flex gap-1 items-center">
+              <Avatar className="cursor-pointer select-none">
                 <Avatar.Image
                   size='sm' 
                   alt={user?.name} 
@@ -62,8 +67,10 @@ const Navbar = () => {
                   referrerPolicy="no-referrer"  
                 />
                 <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+                
               </Avatar>
-
+              <p className="text-muted text-sm border px-1 rounded-full">{user?.name}</p>
+            </div>
               <Button onClick={handleSignOut} size="sm" variant="danger">SignOut</Button>
             </div>}
 

@@ -1,7 +1,15 @@
+'use client';
+
+
 import Link from "next/link";
 import Image from "next/image";
+import { authClient } from "@/lib/auth.client";
 
 const Footer = () => {
+  const {data, isPending} = authClient.useSession()
+  const user = data?.user;
+   
+  
   return (
     <footer className="relative mt-24">
       <div className="mt-12 h-px w-full bg-linear-to-r from-transparent via-gray-300 to-transparent dark:via-white/10" />
@@ -31,7 +39,7 @@ const Footer = () => {
                 className="dark:brightness-200"
               />
               <h2 className="text-xl font-semibold tracking-tight text-black dark:text-white">
-                pixgen
+                Mango
               </h2>
             </div>
 
@@ -118,7 +126,7 @@ const Footer = () => {
             </p>
 
             <Link
-              href="/signup"
+              href={user ? '/' : '/login'}
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-full 
               bg-black text-white dark:bg-white dark:text-black 
               text-sm font-medium transition-all duration-200 

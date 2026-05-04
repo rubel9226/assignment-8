@@ -3,11 +3,25 @@ import { UpdateUserModal } from '@/Components/UpdateUserModal';
 import { authClient } from '@/lib/auth.client';
 import { Card } from '@heroui/react';
 import { Avatar } from '@heroui/react';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 const ProfilePage = () => {
+    const router = useRouter();
     const userData = authClient.useSession()
     const user = userData?.data?.user;
-    console.log(user)
+
+
+    const isLoading = userData?.isPending;
+
+    useEffect(() => {
+        if (isLoading) return;
+        
+        if(!user){
+            router.push('/login');
+        }
+    }, [user, isLoading, router]);
+
     return (
         <div>
             <Card className='max-w-96 mx-auto flex flex-col items-center border mt-4'>
